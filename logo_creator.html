@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Logo Creator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+            background: linear-gradient(to right, #d80ac7, #c319b4);
+            color: white;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        #logoCanvas {
+            border: 2px solid white;
+            border-radius: 10px;
+            margin-top: 20px;
+            background-color: white;
+        }
+        input, button, select {
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            font-size: 16px;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Basic Logo Creator</h2>
+        <label for="logoText">Logo Text:</label>
+        <input type="text" id="logoText" placeholder="Enter text">
+        <br><br>
+        <label for="fontSize">Font Size:</label>
+        <input type="number" id="fontSize" value="40">
+        <br><br>
+        <label for="textColor">Text Color:</label>
+        <input type="color" id="textColor">
+        <br><br>
+        <label for="bgColor">Background Color:</label>
+        <input type="color" id="bgColor">
+        <br><br>
+        <label for="emoji">Emoji:</label>
+        <input type="text" id="emoji" placeholder="Enter emoji">
+        <br><br>
+        <label for="imageUpload">Upload Image:</label>
+        <input type="file" id="imageUpload" accept="image/*">
+        <br><br>
+        <label for="imgX">Image X Position:</label>
+        <input type="number" id="imgX" value="150">
+        <label for="imgY">Image Y Position:</label>
+        <input type="number" id="imgY" value="100">
+        <br><br>
+        <label for="textX">Text X Position:</label>
+        <input type="number" id="textX" value="200">
+        <label for="textY">Text Y Position:</label>
+        <input type="number" id="textY" value="100">
+        <br><br>
+        <label for="logoShape">Logo Shape:</label>
+        <select id="logoShape">
+            <option value="rectangle">Rectangle</option>
+            <option value="circle">Circle</option>
+        </select>
+        <br><br>
+        <button onclick="generateLogo()">Generate Logo</button>
+        <button onclick="downloadLogo()">Download Logo</button>
+        <br><br>
+        <canvas id="logoCanvas" width="400" height="200"></canvas>
+    </div>
+
+    <script>
+        function generateLogo() {
+            let canvas = document.getElementById("logoCanvas");
+            let ctx = canvas.getContext("2d");
+            let text = document.getElementById("logoText").value;
+            let fontSize = document.getElementById("fontSize").value;
+            let textColor = document.getElementById("textColor").value;
+            let bgColor = document.getElementById("bgColor").value;
+            let emoji = document.getElementById("emoji").value;
+            let imageUpload = document.getElementById("imageUpload").files[0];
+            let imgX = parseInt(document.getElementById("imgX").value);
+            let imgY = parseInt(document.getElementById("imgY").value);
+            let textX = parseInt(document.getElementById("textX").value);
+            let textY = parseInt(document.getElementById("textY").value);
+            let logoShape = document.getElementById("logoShape").value;
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            if (logoShape === "circle") {
+                ctx.fillStyle = bgColor;
+                ctx.beginPath();
+                ctx.arc(canvas.width / 2, canvas.height / 2, Math.min(canvas.width, canvas.height) / 2, 0, Math.PI * 2);
+                ctx.fill();
+            } else {
+                ctx.fillStyle = bgColor;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            }
+            
+            ctx.font = fontSize + "px Arial";
+            ctx.fillStyle = textColor;
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillText(text + " " + emoji, textX, textY);
+            
+            if (imageUpload) {
+                let img = new Image();
+                img.onload = function() {
+                    ctx.drawImage(img, imgX, imgY, 100, 100);
+                };
+                img.src = URL.createObjectURL(imageUpload);
+            }
+        }
+
+        function downloadLogo() {
+            let canvas = document.getElementById("logoCanvas");
+            let link = document.createElement('a');
+            link.download = 'logo.png';
+            link.href = canvas.toDataURL("image/png");
+            link.click();
+        }
+    </script>
+</body>
+</html>

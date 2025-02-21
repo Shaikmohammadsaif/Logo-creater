@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Logocraft - Innovation Logo Generation with Diffusion Technology</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            background: linear-gradient(135deg, #9c5fff, #ca7bfe00);
+            color: white;
+            position: relative;
+        }
+
+        header {
+            text-align: center;
+            font-size: 3em;
+            padding-top: 50px;
+            text-transform: uppercase;
+            font-weight: bold;
+            animation: fadeIn 3s ease-out;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-top: 30px;
+            animation: slideIn 2s ease-out;
+        }
+
+        .emoji-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            position: relative;
+            animation: fadeIn 4s ease-out;
+        }
+
+        .emoji {
+            font-size: 3em;
+            margin: 0 15px;
+            animation: bounce 3s infinite ease-in-out;
+        }
+
+        .cta-button {
+            display: block;
+            width: 250px;
+            margin: 40px auto;
+            background-color: #2909ba;
+            color: white;
+            padding: 15px;
+            font-size: 1.5em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            transition: transform 0.3s;
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.1);
+        }
+
+        .cta-button:active {
+            transform: scale(1.05);
+        }
+
+        .emoji-background {
+            position: absolute;
+            font-size: 6em;
+            animation: moveEmojis 15s infinite linear;
+            z-index: -1;
+        }
+
+        .emoji-background span {
+            position: absolute;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            font-size: 1.5em;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            width: 100%;
+            border-radius: 8px;
+            color: white;
+        }
+
+        .footer-emoji {
+            font-size: 2em;
+        }
+
+        /* Keyframe animations */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translateX(-200px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes moveEmojis {
+            0% {
+                left: -10%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    Logocraft 🚀
+</header>
+
+<h2>
+    Innovation Logo Generation with Diffusion Technology 💡✨
+</h2>
+
+<div class="emoji-container">
+    <span class="emoji">🚀</span>
+    <span class="emoji">🌐</span>
+    <span class="emoji">🎨</span>
+    <span class="emoji">💡</span>
+    <span class="emoji">✨</span>
+</div>
+
+<a href="logo_creator.html" class="cta-button">Generate Your Logo Now!</a>
+
+<!-- Moving Emojis Background -->
+<div class="emoji-background">
+    <span style="top: 10%; left: 20%;">🎨</span>
+    <span style="top: 40%; left: 50%;">🚀</span>
+    <span style="top: 70%; left: 80%;">✨</span>
+    <span style="top: 25%; left: 70%;">🌐</span>
+    <span style="top: 60%; left: 10%;">💡</span>
+    <span style="top: 90%; left: 60%;">🎨</span>
+    <span style="top: 15%; left: 85%;">🚀</span>
+</div>
+
+<footer>
+    <div class="footer-emoji">🌟</div>
+    <p>Powered by Logocraft | Innovating Your Brand</p>
+</footer>
+
+</body>
+</html>
